@@ -1,0 +1,2 @@
+Separating Decimal and Int
+- https://www.baeldung.com/java-separate-double-into-integer-decimal-parts
