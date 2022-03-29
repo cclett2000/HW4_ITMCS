@@ -1,3 +1,10 @@
+//++++++++++++++++++++++++++++++++++++++++++++++++
+// Name: round_method.java
+// Function: compute ceiling/floor rounding
+// Programmer: Charles Lett Jr.
+// Last Updated: 03/24/22
+//++++++++++++++++++++++++++++++++++++++++++++++++
+
 import java.util.Scanner;
 
 public class round_method {
