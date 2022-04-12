@@ -1,2 +1,7 @@
+Part 2
+    - provide X-set and Y-set
+    - allow user to input 4 combos
+    - determine function type based on the 4 combos
+
 Separating Decimal and Int
 - https://www.baeldung.com/java-separate-double-into-integer-decimal-parts
