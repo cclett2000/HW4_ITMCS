@@ -14,6 +14,9 @@ public class getMapType {
     }
 
     private static void getType(){
+        boolean isSurjecive = false;
+        boolean isInjective = false;
+        boolean isBijective = false;
 
 
         // provided function
@@ -22,6 +25,9 @@ public class getMapType {
 
         // init storage for user function
         String[] u_func_X = new String[4];
+        int[] x_temp = {0, 0, 0, 0};
+        int[] y_temp = {0, 0, 0, 0};
+
         String[] u_func_Y = new String[4];
 
         Scanner uInput = new Scanner(System.in);
@@ -39,7 +45,7 @@ public class getMapType {
         }
         System.out.println("Domain Filled!");
 
-        System.out.println("\nBegin Filling Target");
+        System.out.println("\nBegin Filling Target (input '-1' for no target)");
         for (int y = 0; y < u_func_Y.length; y++){
             System.out.print((y + 1) + "/" + u_func_Y.length + " >>> ");
             u_func_Y[y] = uInput.nextLine();
@@ -49,17 +55,55 @@ public class getMapType {
         // begin type check
         int[] target_count = new int[4];    // number target occurrences
 
-        for (int i = 0; i < u_func_Y.length; i++) {
-            for (int j = 0; j < u_func_Y.length; j++) {
-                if (Integer.valueOf(u_func_Y[i]) == Integer.valueOf(u_func_Y[j])) target_count[i] += 1;
+        // domain check
+        for (int i = 0; i < u_func_X.length; i++) {
+            for (int j = 0; j < u_func_X.length; j++) {
+                if (u_func_X[j].equals(u_func_X[i])){
+                    x_temp[i] += 1;
+                }
             }
         }
 
-        // debug info
-        System.out.println(Arrays.toString(u_func_X));
-        System.out.println(Arrays.toString(u_func_Y));
-        System.out.println(Arrays.toString(target_count));
+        for (int k = 0; k < x_temp.length; k++) {
+            if (x_temp[k] > 1) {
+                System.out.println("\nThis is not a function! [ERR: Duplicate Domain(s) Found!]");
+                System.exit(419);
+            }
+        }
 
+        // target check
+        for(int y = 0; y < u_func_Y.length; y++){
+            for (int yy = 0; yy < u_func_Y.length; yy++){
+                if (u_func_Y[y].equals(u_func_Y[yy])){
+                    y_temp[y] += 1;
+                }
+            }
+        }
+
+        for(int i = 0; i < y_temp.length; i++){
+            if (y_temp[i] > 1){
+                isInjective = false;
+                isSurjecive = true;
+            }
+
+            if (y_temp[i] == 1) {
+                isInjective = true;
+                isSurjecive = true;
+            }
+        }
+
+        if (isInjective == true && isSurjecive == true) isBijective = true;
+
+        // debug info
+        System.out.println("\n[DEBUG]\n" + Arrays.toString(x_temp));
+        System.out.println(Arrays.toString(u_func_X));
+
+        System.out.println("\n" + Arrays.toString(y_temp));
+        System.out.println(Arrays.toString(u_func_Y));
+
+        System.out.println("\nInjective: " + isInjective);
+        System.out.println("Surjective: " + isSurjecive);
+        System.out.println("Bijective: " + isBijective);
 
     }
 }
