@@ -2,7 +2,7 @@
 // Name: getMapType.java
 // Function: get function mapping type
 // Programmer: Charles Lett Jr.
-// Last Updated: 03/29/22
+// Last Updated: 04/17/22
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
 import java.util.Arrays;
